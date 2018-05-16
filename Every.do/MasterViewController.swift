@@ -13,11 +13,17 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
+    let dataManager = DataManager()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
+        
+        
+        
         navigationItem.leftBarButtonItem = editButtonItem
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
@@ -25,21 +31,24 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
-    }
+        }//addButton
+        
+    }//viewDidLoad
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     @objc
     func insertNewObject(_ sender: Any) {
+        
+        
+        dataManager.myFetchedResultsController = fetchedResultsController
+        dataManager.insertObject(title: "Singh")
+        /*
         let context = self.fetchedResultsController.managedObjectContext
         let newToDo = ToDo(context: context)
              
@@ -47,6 +56,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         newToDo.toDoDescription = "R"
 
         // Save the context.
+        
         do {
             try context.save()
         } catch {
@@ -55,6 +65,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+ */
     }
 
     // MARK: - Segues
