@@ -16,7 +16,8 @@
 		F1B03CFC20AC7DF2000676E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B03CFA20AC7DF2000676E5 /* LaunchScreen.storyboard */; };
 		F1B03D0720AC7DF2000676E5 /* Every_doTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B03D0620AC7DF2000676E5 /* Every_doTests.swift */; };
 		F1B03D1220AC7DF3000676E5 /* Every_doUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B03D1120AC7DF3000676E5 /* Every_doUITests.swift */; };
-		F1B03D2020ACA93A000676E5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B03D1F20ACA93A000676E5 /* DataManager.swift */; };
+		F1B03D2220ACB91E000676E5 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B03D2120ACB91E000676E5 /* AddViewController.swift */; };
+		F1B03D2420ACBD87000676E5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B03D2320ACBD87000676E5 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,8 @@
 		F1B03D0D20AC7DF3000676E5 /* Every.doUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Every.doUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B03D1120AC7DF3000676E5 /* Every_doUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Every_doUITests.swift; sourceTree = "<group>"; };
 		F1B03D1320AC7DF3000676E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1B03D1F20ACA93A000676E5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		F1B03D2120ACB91E000676E5 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		F1B03D2320ACBD87000676E5 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +107,10 @@
 			children = (
 				F1B03CEC20AC7DF1000676E5 /* AppDelegate.swift */,
 				F1B03CF120AC7DF1000676E5 /* MasterViewController.swift */,
-				F1B03D1F20ACA93A000676E5 /* DataManager.swift */,
 				F1B03CF320AC7DF1000676E5 /* DetailViewController.swift */,
 				F1B03CF520AC7DF1000676E5 /* Main.storyboard */,
+				F1B03D2320ACBD87000676E5 /* TableViewCell.swift */,
+				F1B03D2120ACB91E000676E5 /* AddViewController.swift */,
 				F1B03CF820AC7DF2000676E5 /* Assets.xcassets */,
 				F1B03CFA20AC7DF2000676E5 /* LaunchScreen.storyboard */,
 				F1B03CFD20AC7DF2000676E5 /* Info.plist */,
@@ -265,9 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1B03D2220ACB91E000676E5 /* AddViewController.swift in Sources */,
 				F1B03CF020AC7DF1000676E5 /* Every_do.xcdatamodeld in Sources */,
-				F1B03D2020ACA93A000676E5 /* DataManager.swift in Sources */,
 				F1B03CED20AC7DF1000676E5 /* AppDelegate.swift in Sources */,
+				F1B03D2420ACBD87000676E5 /* TableViewCell.swift in Sources */,
 				F1B03CF220AC7DF1000676E5 /* MasterViewController.swift in Sources */,
 				F1B03CF420AC7DF1000676E5 /* DetailViewController.swift in Sources */,
 			);

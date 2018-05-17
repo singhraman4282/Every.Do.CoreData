@@ -13,12 +13,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
-    let dataManager = DataManager()
+    
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         
         
         
@@ -45,10 +45,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     @objc
     func insertNewObject(_ sender: Any) {
         
+        presentAlertView()
+
         
-        dataManager.myFetchedResultsController = fetchedResultsController
-        dataManager.insertObject(title: "Singh")
-        /*
+       /*
         let context = self.fetchedResultsController.managedObjectContext
         let newToDo = ToDo(context: context)
              
@@ -79,16 +79,22 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
-        }
-    }
+        }//showDetail
+        
+        
+    }//prepareForSegur
 
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+//        return fetchedResultsController.sections?.count ?? 0
         return fetchedResultsController.sections?.count ?? 0
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        let sectionInfo = fetchedResultsController.sections![section]
+//        return sectionInfo.numberOfObjects
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
@@ -193,6 +199,87 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
+    
+    
+    
+    func presentAlertView() {
+        
+        let alert = UIAlertController(title: "New Todo",
+                                      message: "Add a new task",
+                                      preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) {
+            [unowned self] action in
+            
+            guard let titleField = alert.textFields?.first,
+                let titleToSave = titleField.text else {
+                    return
+            }
+            
+            guard let descField = alert.textFields?[1],
+                let descToSave = descField.text else {
+                    return
+            }
+            
+            guard let prioField = alert.textFields?[2],
+                let prioToSave = prioField.text else {
+                    return
+            }
+            
+            
+            self.save(title: titleToSave, description: descToSave, priority: prioToSave)
+            self.tableView.reloadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        
+        
+        alert.addTextField { (titleField) in
+            titleField.placeholder = "Enter Title of ToDo"
+        }
+        alert.addTextField { (descField) in
+            descField.placeholder = "Enter Description of ToDo"
+        }
+        alert.addTextField { (prioField) in
+            prioField.placeholder = "Enter Priority of ToDo"
+        }
+        
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }//presentAlertView
+    
+    
+    
+    func save(title:String, description:String, priority:String) {
+        let context = self.fetchedResultsController.managedObjectContext
+        let newToDo = ToDo(context: context)
+        
+        // If appropriate, configure the new managed object.
+        newToDo.toDoDescription = description
+        newToDo.toDoTitle = title
+        newToDo.toDoPriority = priority
+        
+        // Save the context.
+        
+        do {
+            try context.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }//save
+    
+    func editObject() {
+        
+       
+    }//editObject
+    
 
     /*
      // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.

@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
         let controller = masterNavigationController.topViewController as! MasterViewController
         controller.managedObjectContext = self.persistentContainer.viewContext
-        let controller2 = controller.dataManager
-        controller2.managedObjectContext = self.persistentContainer.viewContext
         return true
     }
 
